@@ -17,11 +17,15 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #FFFDEDFA;
+  background-color: #FFFEF6FA;
+  -webkit-mask-image: radial-gradient(#000000FA, transparent);
 }
 .on-open img{
   width: 200px;
   height: 200px;
   aspect-ratio: 5/5;
   object-fit: cover;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  
 }
