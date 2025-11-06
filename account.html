@@ -1,239 +1,266 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ALBankz - Tableau de Bord</title>
-    
-    <!-- Police Inter de Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <!-- Icônes Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <!-- Lien vers le fichier CSS -->
-    <link rel="stylesheet" href="./account.css">
-    <link rel="stylesheet" href="./style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALBankz - Espace Compte</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="./account.css">
+  <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
-    <!-- Conteneur principal (Layout) -->
-    <div id="app" class="app-container">
+  <!-- Conteneur principal (Layout) -->
+  <div id="app" class="app-container">
+    
+    <!-- ============================================= -->
+    <!-- MENU / BARRE LATÉRALE (Sidebar) -->
+    <!-- ============================================= -->
+    <aside id="sidebar" class="sidebar">
+      
+      <!-- Logo ALBankz -->
+      <div class="logo-container">
+        <h1 class="logo-title">ALBankz<span class="logo-subtitle">DASH</span></h1>
+        <!-- Bouton de fermeture mobile -->
+        <button id="closeMenuButton" class="menu-button close-button" aria-label="Fermer le menu">
+          <i class="fa-solid fa-times"></i>
+        </button>
+      </div>
+      
+      <!-- Navigation Menu -->
+      <nav class="main-nav">
+        <a href="#" class="nav-link active">
+          <i class="fa-solid fa-house nav-icon"></i>
+          <span>Tableau de Bord</span>
+        </a>
+        <a href="#" class="nav-link">
+          <i class="fa-solid fa-list-ul nav-icon"></i>
+          <span>Mes Transactions</span>
+        </a>
+        <a href="#" class="nav-link">
+          <i class="fa-solid fa-credit-card nav-icon"></i>
+          <span>Cartes & Services</span>
+        </a>
+        <a href="#" class="nav-link">
+          <i class="fa-solid fa-chart-line nav-icon"></i>
+          <span>Investissements</span>
+        </a>
+        <a href="#" class="nav-link">
+          <i class="fa-solid fa-gear nav-icon"></i>
+          <span>Paramètres</span>
+        </a>
+        <a href="#" class="nav-link logout-link">
+          <i class="fa-solid fa-sign-out-alt nav-icon"></i>
+          <span>Déconnexion</span>
+        </a>
+      </nav>
+    </aside>
+    
+    <!-- Fond sombre semi-transparent pour mobile -->
+    <div id="menuOverlay" class="menu-overlay"></div>
+    
+    
+    <!-- ============================================= -->
+    <!-- CONTENU PRINCIPAL -->
+    <!-- ============================================= -->
+    <main class="main-content">
+      <!-- En-tête du Dashboard -->
+      <header class="dashboard-header">
+        <div class="header-left">
+          <button id="openMenuButton" class="menu-button open-button" aria-label="Ouvrir le menu">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <h2 class="welcome-title">Bonjour, User!</h2>
+        </div>
         
-        <!-- ============================================= -->
-        <!-- MENU / BARRE LATÉRALE (Sidebar) -->
-        <!-- ============================================= -->
-        <aside id="sidebar" class="sidebar">
+        <div class="header-right">
+          <!-- Notification -->
+          <i class="fa-solid fa-bell notification-icon" title="Notifications"></i>
+          
+          <!-- Avatar utilisateur -->
+          <div class="user-avatar" title="Alain Murhabazi">AM</div>
+        </div>
+      </header>
+      
+      <!-- Message de Succès et Solde/Actions Rapides -->
+      <section class="quick-actions-section">
+        <div class="info-card success-message-card">
+          <!-- Message de succès -->
+          <div class="message-row">
+            <p class="success-text">
+              Compte créé avec succès !
+            </p>
+            <i class="fa-solid fa-circle-check check-icon"></i>
+          </div>
+          
+          <!-- Bloc d'actions rapides et solde -->
+          <div class="quick-actions-grid">
             
-            <!-- Logo ALBankz -->
-            <div class="logo-container">
-                <h1 class="logo-title">ALBankz<span class="logo-subtitle">DASH</span></h1>
-                <!-- Bouton de fermeture mobile -->
-                <button id="closeMenuButton" class="menu-button close-button" aria-label="Fermer le menu">
-                    <i class="fa-solid fa-times"></i>
+            <!-- Tuile: Déposer -->
+            <div class="action-tile deposit-tile" title="Déposer de l'argent" style="grid-area: tile1;">
+              <i class="fa-solid fa-money-bill-trend-up action-icon blue-icon"></i>
+              <p class="action-text">Déposer</p>
+            </div>
+            
+            <!-- Tuile: Retirer -->
+            <div class="action-tile withdraw-tile" title="Retirer de l'argent" style="grid-area: tile2;">
+              <i class="fa-solid fa-money-bill-transfer action-icon secondary-icon"></i>
+              <p class="action-text">Retirer</p>
+            </div>
+            
+            <!-- Tuile: Afficher Solde -->
+            <div id="soldeTile" class="action-tile solde-tile" title="Afficher le Solde" style="grid-area: tile3;">
+              <i class="fa-solid fa-wallet action-icon primary-icon"></i>
+              <p class="solde-label">Votre Solde Actuel</p>
+              <div class="solde-display">
+                <p id="solde"  class="solde-amount">********</p>
+                <button id="toggleSolde" class="solde-toggle-button" aria-label="Afficher/Masquer le solde">
+                  <i id="eyeIcon" class="fa-solid fa-eye"></i>
                 </button>
+              </div>
             </div>
-            
-            <!-- Navigation Menu -->
-            <nav class="main-nav">
-                <a href="#" class="nav-link active">
-                    <i class="fa-solid fa-house nav-icon"></i>
-                    <span>Tableau de Bord</span>
-                </a>
-                <a href="#" class="nav-link">
-                    <i class="fa-solid fa-list-ul nav-icon"></i>
-                    <span>Mes Transactions</span>
-                </a>
-                <a href="#" class="nav-link">
-                    <i class="fa-solid fa-credit-card nav-icon"></i>
-                    <span>Cartes & Services</span>
-                </a>
-                <a href="#" class="nav-link">
-                    <i class="fa-solid fa-chart-line nav-icon"></i>
-                    <span>Investissements</span>
-                </a>
-                <a href="#" class="nav-link">
-                    <i class="fa-solid fa-gear nav-icon"></i>
-                    <span>Paramètres</span>
-                </a>
-                <a href="#" class="nav-link logout-link">
-                    <i class="fa-solid fa-sign-out-alt nav-icon"></i>
-                    <span>Déconnexion</span>
-                </a>
-            </nav>
-        </aside>
-
-        <!-- Fond sombre semi-transparent pour mobile -->
-        <div id="menuOverlay" class="menu-overlay"></div>
-
-        <!-- ============================================= -->
-        <!-- CONTENU PRINCIPAL -->
-        <!-- ============================================= -->
-        <main class="main-content">
-
-            <!-- En-tête du Dashboard -->
-            <header class="dashboard-header">
-                <div class="header-left">
-                    <button id="openMenuButton" class="menu-button open-button" aria-label="Ouvrir le menu">
-                        <i class="fa-solid fa-bars"></i>
-                    </button>
-                    <h2 class="welcome-title">Bonjour, Alain!</h2>
-                </div>
-                
-                <div class="header-right">
-                    <!-- Notification -->
-                    <i class="fa-solid fa-bell notification-icon" title="Notifications"></i>
-                    
-                    <!-- Avatar utilisateur -->
-                    <div class="user-avatar" title="Alain Murhabazi">AM</div>
-                </div>
-            </header>
-
-            <!-- Message de Succès et Solde/Actions Rapides -->
-            <section class="quick-actions-section">
-                <div class="info-card success-message-card">
-                    <!-- Message de succès -->
-                    <div class="message-row">
-                        <p class="success-text">
-                            Compte (ALAIN) créé avec succès !
-                        </p>
-                        <i class="fa-solid fa-circle-check check-icon"></i>
-                    </div>
-                    
-                    <!-- Bloc d'actions rapides et solde -->
-                    <div class="quick-actions-grid">
-                        
-                        <!-- Tuile: Déposer -->
-                        <div class="action-tile deposit-tile" title="Déposer de l'argent">
-                            <i class="fa-solid fa-money-bill-trend-up action-icon blue-icon"></i>
-                            <p class="action-text">Déposer</p>
-                        </div>
-                        
-                        <!-- Tuile: Retirer -->
-                        <div class="action-tile withdraw-tile" title="Retirer de l'argent">
-                            <i class="fa-solid fa-money-bill-transfer action-icon secondary-icon"></i>
-                            <p class="action-text">Retirer</p>
-                        </div>
-                        
-                        <!-- Tuile: Afficher Solde -->
-                        <div id="soldeTile" class="action-tile solde-tile" title="Afficher le Solde">
-                            <i class="fa-solid fa-wallet action-icon primary-icon"></i>
-                            <p class="solde-label">Votre Solde Actuel</p>
-                            <div class="solde-display">
-                                <p id="solde" data-solde="24578.50" class="solde-amount">********</p>
-                                <button id="toggleSolde" class="solde-toggle-button" aria-label="Afficher/Masquer le solde">
-                                    <i id="eyeIcon" class="fa-solid fa-eye"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- ============================================= -->
-            <!-- SECTION CARTES ET SERVICES -->
-            <!-- ============================================= -->
-            <h3 class="section-title">Vos Cartes et Services</h3>
-            
-            <div class="cards-services-grid">
-                
-                <!-- Bloc Carte Visa (Présentation) -->
-                <div class="info-card visa-card-block">
-                    <h4 class="card-block-title">
-                        <i class="fa-brands fa-cc-visa visa-icon"></i>
-                        <span>Carte Visa ALBankz Premium</span>
-                    </h4>
-                    
-                    <!-- Aperçu de la carte Visa -->
-                    <div class="visa-card-preview">
-                        <div class="card-details">
-                            <p class="card-bank-name">ALBankz</p>
-                            <i class="fa-solid fa-wifi card-contactless-icon"></i>
-                        </div>
-                        <div class="card-info">
-                            <p class="card-number">**** **** **** 1987</p>
-                            <div class="card-holder-info">
-                                <p>ALAIN MURHABAZI</p>
-                                <p>12/28</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <button class="primary-button card-manage-button">
-                        <i class="fa-solid fa-lock button-icon"></i> Gérer ou Bloquer ma Carte
-                    </button>
-                </div>
-                
-                <!-- Bloc Demande de Service -->
-                <div class="info-card services-list-block">
-                    <div>
-                        <h4 class="card-block-title">Autres Services</h4>
-                        <ul class="services-list">
-                            <li>
-                                <i class="fa-solid fa-exchange-alt service-icon secondary-icon"></i>
-                                <p>Virement International</p>
-                            </li>
-                            <li>
-                                <i class="fa-solid fa-piggy-bank service-icon blue-icon"></i>
-                                <p>Ouvrir un Compte Épargne</p>
-                            </li>
-                            <li>
-                                <i class="fa-solid fa-hand-holding-dollar service-icon primary-icon"></i>
-                                <p>Simuler un Prêt</p>
-                            </li>
-                        </ul>
-                    </div>
-                    <button class="secondary-button service-request-button">
-                        Faire une Nouvelle Demande
-                    </button>
-                </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- ============================================= -->
+      <!-- SECTION CARTES ET SERVICES -->
+      <!-- ============================================= -->
+      <h3 class="section-title">Vos Cartes et Services</h3>
+      
+      <div class="cards-services-grid">
+        
+        <!-- Bloc Carte Visa (Présentation) -->
+        <div class="info-card visa-card-block">
+          <h4 class="card-block-title">
+            <i class="fa-brands fa-cc-visa visa-icon"></i>
+            <span>Carte Visa ALBankz Premium</span>
+          </h4>
+          
+          <!-- Aperçu de la carte Visa -->
+          <div class="visa-card-preview">
+            <div class="card-details">
+              <p class="card-bank-name">ALBankz</p>
+              <i class="fa-solid fa-wifi card-contactless-icon"></i>
             </div>
-
-            <!-- ============================================= -->
-            <!-- SECTION TRANSACTIONS RÉCENTES -->
-            <!-- ============================================= -->
-            <h3 class="section-title">Transactions Récentes</h3>
-
-            <div class="info-card transactions-block">
-                <!-- Tableau des transactions -->
-                <div class="table-wrapper">
-                    <table class="transactions-table">
-                        <thead>
-                            <tr>
-                                <th>Date</th>
-                                <th>Description</th>
-                                <th>Montant</th>
-                                <th>Statut</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>05/11/2025</td>
-                                <td class="transaction-description">Achat en ligne (Amazon)</td>
-                                <td class="amount debit-amount">- 450.00 EUR</td>
-                                <td><span class="status-badge debited">Débité</span></td>
-                            </tr>
-                            <tr>
-                                <td>04/11/2025</td>
-                                <td class="transaction-description">Salaire (Virement)</td>
-                                <td class="amount credit-amount">+ 3,500.00 EUR</td>
-                                <td><span class="status-badge credited">Crédité</span></td>
-                            </tr>
-                            <tr>
-                                <td>03/11/2025</td>
-                                <td class="transaction-description">Retrait Distributeur</td>
-                                <td class="amount debit-amount">- 100.00 EUR</td>
-                                <td><span class="status-badge debited">Débité</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <button class="link-button view-all-button">
-                    Voir toutes les transactions <i class="fa-solid fa-arrow-right link-icon"></i>
-                </button>
+            <div class="card-info">
+              <p class="card-number">*** *** *** 2007</p>
+              <div class="card-holder-info">
+                <p class="nameInCard">USER</p>
+                <p>12/28</p>
+              </div>
             </div>
-        </main>
-    </div>
+          </div>
+          
+          <button class="primary-button card-manage-button">
+            <i class="fa-solid fa-lock button-icon"></i> Gérer ou Bloquer ma Carte
+          </button>
+        </div>
+        
+        <!-- Bloc Demande de Service -->
+        <div class="info-card services-list-block">
+          <div>
+            <h4 class="card-block-title">Autres Services</h4>
+            <ul class="services-list">
+              <li>
+                <i class="fa-solid fa-exchange-alt service-icon secondary-icon"></i>
+                <p>Virement International</p>
+              </li>
+              <li>
+                <i class="fa-solid fa-piggy-bank service-icon blue-icon"></i>
+                <p>Ouvrir un Compte Épargne</p>
+              </li>
+              <li>
+                <i class="fa-solid fa-hand-holding-dollar service-icon primary-icon"></i>
+                <p>Simuler un Prêt</p>
+              </li>
+            </ul>
+          </div>
+          <button class="secondary-button service-request-button">
+            Faire une Nouvelle Demande
+          </button>
+        </div>
+      </div>
+      
+      <!-- ============================================= -->
+      <!-- SECTION TRANSACTIONS RÉCENTES -->
+      <!-- ============================================= -->
+      <h3 class="section-title">Transactions Récentes</h3>
+      
+      <div class="info-card transactions-block">
+        <!-- Tableau des transactions -->
+        <div class="table-wrapper">
+          <table class="transactions-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Montant</th>
+                <th>Statut</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>05/11/2025</td>
+                <td class="transaction-description">Achat en ligne (Amazon)</td>
+                <td class="amount debit-amount">- 450.00 EUR</td>
+                <td><span class="status-badge debited">Débité</span></td>
+              </tr>
+              <tr>
+                <td>04/11/2025</td>
+                <td class="transaction-description">Salaire (Virement)</td>
+                <td class="amount credit-amount">+ 3,500.00 EUR</td>
+                <td><span class="status-badge credited">Crédité</span></td>
+              </tr>
+              <tr>
+                <td>03/11/2025</td>
+                <td class="transaction-description">Retrait Distributeur</td>
+                <td class="amount debit-amount">- 100.00 EUR</td>
+                <td><span class="status-badge debited">Débité</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <button class="link-button view-all-button">
+          Voir toutes les transactions <i class="fa-solid fa-arrow-right link-icon"></i>
+        </button>
+      </div>
+    </main>
+    <footer class="footer">
+      <h4>À Propos de Nous</h4>
+      <span class="bankName">ALBankz</span>
+      <img src="./logoBank.webp" alt="Logo ALBankz" style="width: 150px; height: 150px;" />
+      <p>Ce logo et la marque ALBankz nous appartiennent.</p><br /><br />
+      <p>Suivez-nous sur nos réseaux sociaux :</p>
+      <ul class="OurSocialMedia">
+        <li></li>
+        <li></li>
+      </ul>
+      <p>Pour une assistance personnalisée, contactez-nous :</p>
+      <ul class="OurContact">
+        <li></li>
+        <li></li>
+      </ul>
+      <div class="me">
+        <p>Cimpunda, Katutu, Bukavu, Sud-Kivu, République Démocratique du Congo</p>
+        <br />
+        <p>Murhabazi Bisimwa Alain</p>
+      </div>
+      <div class="copyright">
+        <p>&COPY;2025 ALBankz <span style="color: var(--blue-color);">v1.0</span> || Tous droits réservés</p>
+      </div>
+    </footer>
+  </div>
+  
+  
+  <!-- Lien vers le fichier JavaScript -->
+  <script src="./bankAccount.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./bank.js" type="text/javascript" charset="utf-8"></script>
+    <script src="./main.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./account.js" type="text/javascript" charset="utf-8"></script>
 
-    <!-- Lien vers le fichier JavaScript -->
-    <script src=""></script>
 </body>
+
 </html>

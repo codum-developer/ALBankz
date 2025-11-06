@@ -1,11 +1,5 @@
 /* Définition des variables de couleurs */
 :root {
-    --light-color: #FFFFFF;
-    --dark-color: #2D3138;
-    --primary-color: #FFE600; /* Or/Jaune Vif pour ALBankz */
-    --secondary-color: #00FF42;
-    --blue-color: #0D92F9;
-    --error-color: #FF0000;
     --border-radius: 1rem; /* 16px */
     --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.05);
     --shadow-dark: 0 4px 12px rgba(0, 0, 0, 0.2);
@@ -53,6 +47,7 @@ a {
 .app-container {
     display: flex;
     min-height: 100vh;
+    flex-direction: column;
 }
 
 /* Barre Latérale (Sidebar) - Mobile par défaut */
@@ -96,7 +91,7 @@ a {
 /* Contenu Principal */
 .main-content {
     flex-grow: 1;
-    padding: 1.5rem;
+    padding: 1rem;
 }
 
 /* Media Query: Desktop/Tablet */
@@ -187,7 +182,7 @@ a {
     padding-bottom: 1rem;
     border-bottom: 1px solid rgba(107, 114, 128, 0.2); /* Gris clair/foncé selon thème */
 }
-@media (max-width: 1023px) {
+@media (max-width: 1024px) {
     .dashboard-header {
         position: sticky;
         top: 0;
@@ -196,7 +191,6 @@ a {
         padding-top: 0.5rem;
     }
 }
-
 
 .header-left, .header-right {
     display: flex;
@@ -245,7 +239,7 @@ a {
    ============================================= */
 .info-card {
     background-color: var(--card-background);
-    padding: 1.5rem;
+    padding: 5px;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-light);
     border: 1px solid rgba(255, 230, 0, 0.2); /* Bordure subtile jaune */
@@ -260,7 +254,7 @@ a {
 }
 
 .section-title {
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: 600;
     margin-bottom: 1.5rem;
     padding-top: 1rem;
@@ -332,7 +326,7 @@ a {
 }
 
 .message-row {
-    display: flex;
+    display: none;
     justify-content: space-between;
     align-items: center;
     padding-bottom: 1rem;
@@ -353,14 +347,18 @@ a {
 
 .quick-actions-grid {
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
     gap: 1rem;
+    grid-template-areas:
+    "tile1 tile2 ""tile3 tile3";
 }
 
 @media (min-width: 640px) {
-    .quick-actions-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
+  .info-card{
+    padding: 1.5rem;
+  }
+  .main-content{
+    padding: 1.5rem;
+  }
 }
 
 .action-tile {
@@ -368,7 +366,7 @@ a {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 1.5rem;
+    padding: .5rem;
     border-radius: var(--border-radius);
     background-color: var(--accent-bg);
     border: 1px solid rgba(255, 230, 0, 0.4);
