@@ -1,0 +1,623 @@
+/* Définition des variables de couleurs */
+:root {
+    --light-color: #FFFFFF;
+    --dark-color: #2D3138;
+    --primary-color: #FFE600; /* Or/Jaune Vif pour ALBankz */
+    --secondary-color: #00FF42;
+    --blue-color: #0D92F9;
+    --error-color: #FF0000;
+    --border-radius: 1rem; /* 16px */
+    --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --shadow-dark: 0 4px 12px rgba(0, 0, 0, 0.2);
+    --text-color: var(--dark-color);
+    --background-color: var(--light-color);
+    --card-background: var(--light-color);
+    --accent-bg: rgba(255, 230, 0, 0.1);
+}
+
+/* =============================================
+   Thème Sombre par défaut (si le système le préfère)
+   ============================================= */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-color: var(--light-color);
+        --background-color: var(--dark-color);
+        --card-background: #3f454f; /* Gris foncé légèrement différent */
+        --accent-bg: rgba(255, 230, 0, 0.05);
+    }
+}
+
+/* Réinitialisation de base et corps */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    transition: background-color 0.3s, color 0.3s; /* Transition fluide des couleurs de thème */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* =============================================
+   Layout Global (Responsive)
+   ============================================= */
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Barre Latérale (Sidebar) - Mobile par défaut */
+.sidebar {
+    width: 100%;
+    max-width: 250px; /* Largeur sur desktop */
+    padding: 2rem 1.5rem;
+    background-color: var(--card-background);
+    box-shadow: var(--shadow-dark);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    z-index: 40;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.sidebar.is-open {
+    transform: translateX(0);
+}
+
+/* Overlay de menu mobile */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 30;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.menu-overlay.is-active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Contenu Principal */
+.main-content {
+    flex-grow: 1;
+    padding: 1.5rem;
+}
+
+/* Media Query: Desktop/Tablet */
+@media (min-width: 1024px) {
+    .sidebar {
+        position: relative;
+        transform: translateX(0);
+        min-height: 100vh;
+        box-shadow: var(--shadow-light);
+    }
+    .main-content {
+        margin-left: 0; /* Pas de marge car la sidebar est relative */
+        padding: 2.5rem 2rem;
+    }
+    .menu-button {
+        display: none !important; /* Masque les boutons de menu sur desktop */
+    }
+}
+
+/* =============================================
+   Styles de la Sidebar
+   ============================================= */
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2.5rem;
+}
+
+.logo-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--primary-color);
+}
+
+.logo-subtitle {
+    font-size: 0.75rem;
+    margin-left: 0.25rem;
+    color: #6B7280; /* Gris */
+}
+
+.main-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    font-weight: 500;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border-radius: var(--border-radius);
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.nav-link:hover, .nav-link.active {
+    background-color: var(--accent-bg);
+}
+
+.nav-link.active {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.logout-link {
+    margin-top: 3rem;
+    color: var(--error-color);
+}
+.logout-link:hover {
+    background-color: rgba(255, 0, 0, 0.1);
+}
+
+.nav-icon {
+    width: 1.5rem;
+    margin-right: 1rem;
+    text-align: center;
+}
+
+/* =============================================
+   Styles de l'En-tête
+   ============================================= */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(107, 114, 128, 0.2); /* Gris clair/foncé selon thème */
+}
+@media (max-width: 1023px) {
+    .dashboard-header {
+        position: sticky;
+        top: 0;
+        background-color: var(--background-color);
+        z-index: 20;
+        padding-top: 0.5rem;
+    }
+}
+
+
+.header-left, .header-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.welcome-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.menu-button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.notification-icon {
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.notification-icon:hover {
+    color: var(--primary-color);
+}
+
+.user-avatar {
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--dark-color);
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: default;
+}
+
+/* =============================================
+   Composants (Cards, Buttons)
+   ============================================= */
+.info-card {
+    background-color: var(--card-background);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    border: 1px solid rgba(255, 230, 0, 0.2); /* Bordure subtile jaune */
+    transition: box-shadow 0.3s, background-color 0.3s;
+}
+
+@media (prefers-color-scheme: dark) {
+    .info-card {
+        box-shadow: var(--shadow-dark);
+        border: 1px solid rgba(255, 230, 0, 0.1);
+    }
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(107, 114, 128, 0.2);
+}
+
+/* Boutons primaires (Jaune ALBankz) */
+.primary-button {
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px; /* Full rounded */
+    font-weight: 600;
+    border: none;
+    background-color: var(--primary-color);
+    color: var(--dark-color);
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.primary-button:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+/* Boutons secondaires (Bleu) */
+.secondary-button {
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    border: none;
+    background-color: var(--blue-color);
+    color: var(--light-color);
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.secondary-button:hover {
+    opacity: 0.9;
+}
+
+.button-icon {
+    margin-right: 0.5rem;
+}
+
+.link-button {
+    background: none;
+    border: none;
+    color: var(--blue-color);
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-top: 1rem;
+    display: block;
+}
+.link-button:hover {
+    text-decoration: underline;
+}
+
+.link-icon {
+    margin-left: 0.25rem;
+}
+
+/* =============================================
+   SECTION 1: Quick Actions
+   ============================================= */
+.success-message-card {
+    margin-bottom: 2rem;
+}
+
+.message-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(107, 114, 128, 0.1);
+    margin-bottom: 1rem;
+}
+
+.success-text {
+    color: var(--secondary-color);
+    font-weight: 600;
+    font-size: 1.125rem;
+}
+
+.check-icon {
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+}
+
+.quick-actions-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+}
+
+@media (min-width: 640px) {
+    .quick-actions-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.action-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    background-color: var(--accent-bg);
+    border: 1px solid rgba(255, 230, 0, 0.4);
+    transition: all 0.3s;
+    cursor: pointer;
+    text-align: center;
+}
+
+.action-tile:hover {
+    box-shadow: 0 8px 15px rgba(255, 230, 0, 0.2);
+    transform: translateY(-3px);
+}
+
+.action-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.action-text {
+    font-weight: 500;
+    font-size: 1.125rem;
+}
+
+.solde-tile {
+    border: 2px solid var(--primary-color);
+    background-color: var(--accent-bg);
+}
+
+.solde-label {
+    font-size: 0.875rem;
+    opacity: 0.7;
+}
+
+.solde-display {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+}
+
+.solde-amount {
+    font-size: 1.875rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+}
+
+.solde-toggle-button {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 1.25rem;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+.solde-toggle-button:hover {
+    opacity: 1;
+}
+
+/* Couleurs des icônes */
+.primary-icon { color: var(--primary-color); }
+.secondary-icon { color: var(--secondary-color); }
+.blue-icon { color: var(--blue-color); }
+
+/* =============================================
+   SECTION 2: Cards & Services
+   ============================================= */
+.cards-services-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 1024px) {
+    .cards-services-grid {
+        grid-template-columns: 2fr 1fr;
+    }
+}
+
+.visa-card-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-block-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.visa-icon {
+    color: var(--blue-color);
+    font-size: 1.5rem;
+}
+
+/* Style de la carte Visa (simulé) */
+.visa-card-preview {
+    width: 100%;
+    max-width: 400px;
+    height: 12rem; /* Hauteur fixe pour l'aspect carte */
+    padding: 1.25rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    margin: 0 auto 1rem auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    /* Dégradé Or */
+    background: linear-gradient(135deg, #FFD700, #FFE600, #F0E68C); 
+    color: var(--dark-color); /* Texte sombre sur Or */
+    font-family: monospace; /* Pour le numéro de carte */
+}
+
+.card-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.card-bank-name {
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.card-contactless-icon {
+    font-size: 1.125rem;
+    transform: rotate(90deg);
+}
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.card-number {
+    font-size: 1.4rem;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.5rem;
+}
+
+.card-holder-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.card-manage-button {
+    margin-top: auto; /* Pousse le bouton vers le bas */
+}
+
+/* Services List */
+.services-list-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.services-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.services-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+}
+
+.service-icon {
+    font-size: 1.125rem;
+    width: 1.5rem;
+    text-align: center;
+}
+
+/* =============================================
+   SECTION 3: Transactions
+   ============================================= */
+.transactions-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    text-align: left;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.transactions-table th, .transactions-table td {
+    padding: 0.75rem 1.5rem;
+}
+
+.transactions-table thead th {
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #6B7280; /* Gris */
+    border-bottom: 1px solid rgba(107, 114, 128, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+    .transactions-table thead th {
+        color: #9CA3AF; /* Gris plus clair en mode sombre */
+    }
+}
+
+.transactions-table tbody tr:hover {
+    background-color: var(--accent-bg);
+}
+
+.transactions-table tbody td {
+    font-size: 0.875rem;
+    border-bottom: 1px solid rgba(107, 114, 128, 0.05);
+}
+
+.amount {
+    font-weight: 600;
+}
+
+.debit-amount {
+    color: var(--error-color);
+}
+
+.credit-amount {
+    color: var(--secondary-color);
+}
+
+.status-badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.status-badge.debited {
+    background-color: rgba(255, 0, 0, 0.1);
+    color: var(--error-color);
+}
+.status-badge.credited {
+    background-color: rgba(0, 255, 66, 0.1);
+    color: var(--secondary-color);
+}

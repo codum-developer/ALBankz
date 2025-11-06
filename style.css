@@ -1,10 +1,34 @@
-body {
-  width: 100vw;
-  min-height: 100vh;
+:root {
+  --light-color: #FFFFFFFf;
+  --dark-color: #2D3138;
+  --primary-color: #EDC90C;
+  --secondary-color: #00FF42;
+  --blue-color: #0D92F9;
+  --light-theme-gradient: radial-gradient(circle, var(--primary-color) 35%, var(--light-color), var(--light-color));
+  --dark-theme-gradient: radial-gradient(circle, var(--primary-color) 35%, var(--dark-color), var(--dark-color));
+  --error-color: #FF0000;
+  --gradient: linear-gradient(120deg, var(--primary-color), var(--primary-color), #FFF5C4);
+}
+
+* {
   margin: 0;
 }
 
-.on-open {
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--light-color);
+  color: var(--dark-color);
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  position: relative;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.curtain {
   width: 100%;
   height: 100vh;
   margin: 0;
@@ -15,28 +39,454 @@ body {
   background-color: #FFFEF6FA;
   -webkit-mask-image: radial-gradient(#000000FA, transparent);
   mask-image: radial-gradient(#000000FA, transparent);
+  z-index: 1000;
 }
 
-.on-open img {
+.curtain img {
   width: 200px;
   height: 200px;
   aspect-ratio: 5/5;
   object-fit: cover;
   border-top-left-radius: 50%;
   border-top-right-radius: 50%;
-  animation: pulse 2s ease;
+  animation: pulse 2s ease 1s;
   
 }
 
 @keyframes pulse {
   0% {
-    box-shadow: 0 0 0 0 #FFFFFF;
+    box-shadow: 0 0 0 0 var(--light-color);
   }
-  50%{
-    box-shadow: 0 0 10px 10px #000000;
-    transform: scale(1.5);
-  }100%{
-    box-shadow: 0 0  #FFFCFC;
+  
+  50% {
+    box-shadow: 0 0 20px var(--light-color);
+    transform: scale(1.4);
+  }
+  
+  100% {
+    box-shadow: 0 0 #FFFCFC;
     transform: scale(1);
+  }
+}
+
+a {
+  color: var(--blue-color);
+}
+
+p {
+  text-wrap: wrap;
+}
+
+i {
+  color: var(--secondary-color);
+  width: 24px;
+  height: 24px;
+}
+
+p,
+h4,
+h3 {
+  margin: 0;
+  text-align: center;
+}
+
+i {
+  font-size: 24px;
+  margin-right: 8px;
+  color: var(--secondary-color);
+  background: var(--gradient);
+  border-radius: 50%;
+}
+
+label{
+  font-weight: bold;
+  margin-top: 20px;
+}
+button:hover, i:hover, #creationAccount:hover{
+  cursor: pointer;
+  background: #FFF5C4;
+  
+}
+
+button:focus,
+input:focus {
+  outline: none;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  z-index: 100;
+  background: var(--dark-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+
+.header h1 {
+  color: var(--primary-color);
+  margin-left: 8px;
+}
+
+.header i {
+  background: none !important;
+}
+
+
+.beforeAccountCreationDiplay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  min-height: 100vh;
+  width: 100vw;
+  margin: 0;
+}
+
+.bankName {
+  color: var(--primary-color);
+  font-size: 1rem;
+}
+
+.bankNameGreen {
+  color: var(--dark-color);
+  font-size: 1.2rem;
+}
+
+.beforeAccountCreationDiplay h1 {
+  margin: 0 0 20px 20px;
+  font-size: 1.5rem;
+}
+
+.container {
+  max-width: 600px;
+  border: 2px solid var(--primary-color);
+  padding: 20px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  margin: 0 8px 0 8px;
+}
+
+.container h4 {
+  position: absolute;
+  top: -10px;
+  background: var(--light-color);
+  padding: 0 5px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--secondary-color);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.bankDetails {
+  min-height: 100vh;
+  width: 100vw;
+  background: var(--light-theme-gradient);
+  display: grid;
+  grid-template-rows: 100px 1fr 1fr;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  
+}
+
+.bankDetails p {
+  margin: 30px;
+  font-size: 2rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  line-height: 3rem;
+  font-size: bolder;
+}
+
+.bankDetails h4 {
+  width: 90vw;
+  font-size: 2rem;
+  color: var(--primary-color);
+}
+
+.cards img {
+  height: 300px;
+  width: 300px;
+  
+}
+
+.cards {
+  width: 100vw;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 5px;
+}
+
+.Card {
+  justify-self: center;
+  align-self: center;
+  background: #3538524F;
+  border-radius: 20px;
+  width: 300px;
+  height: 300px;
+}
+
+.info {
+  background: var(--dark-color);
+  color: var(--light-color);
+}
+
+.buttonCreation {
+  display: flex;
+  min-height: 300px;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttonCreation button {
+  padding: 5px  !important;
+  width: 80%;
+  font-size: 1.7rem;
+  animation: pulse ease 3s infinite;
+}
+
+#creationAccount {
+  background: var(--gradient);
+  border-radius: 20px;
+  border: none;
+  padding: 20px;
+}
+
+.container p {
+  font-size: 1.5rem;
+  font-family: 'Lucida Grande';
+}
+
+.partnersBrands,
+.ourBrands {
+  min-height: 300px;
+  margin: 0;
+}
+
+.partnersBrands h4,
+.ourBrands h4 {
+  position: relative;
+  font-size: 1.2rem;
+}
+
+.partnersBrands h4::before,
+.partnersBrands h4::after,
+.ourBrands h4::before,
+.ourBrands h4::after {
+  content: " === ";
+  color: var(--blue-color);
+}
+
+.partnersBrandsList,
+.ourBrandsList {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  height: 270px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow-x: scroll;
+  gap: 10px;
+}
+
+.partnersBrandsList::-webkit-scrollbar,
+.ourBrandsList::-webkit-scrollbar {
+  display: none;
+}
+
+.partnersBrandsList img,
+.ourBrandsList img {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+}
+
+.interestCustom {
+  margin-bottom: 100px;
+}
+
+.interestCustom #creationAccount {
+  margin: 20px 0 10px 0;
+  font-size: 1.2rem;
+}
+
+
+.creatingAccount {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #0000005E;
+  backdrop-filter: blur(5px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 110;
+}
+
+.formbox {
+  border: 2px var(--primary-color) solid;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.creatingAccount form {
+  display: grid;
+  gap: 20px;
+}
+
+form input {
+  height: 50px;
+  width: 270px;
+  border: none;
+  color: var(--light-color);
+  font-size: 1rem;
+  font-weight: 300;
+  background: transparent;
+}
+
+.inputBox {
+  position: relative;
+  border-bottom: 2px var(--primary-color) solid;
+  
+}
+
+.inputBox label {
+  color: #FFF5C4;
+  padding: 0;
+  display: block;
+  margin: 0;
+  background: none  !important;
+  position: absolute;
+  left: 5px;
+  top: 25px;
+  transition: all ease .5s;
+  
+}
+
+.inputBox input:focus,
+.inputBox input:valid {
+  outline: none;
+}
+
+.inputBox input:focus~label,
+.inputBox input:valid~label {
+  top: -7px;
+}
+
+form button {
+  border: none;
+  color: var(--dark-color);
+  background: var(--gradient);
+  height: 40px;
+  border-radius: 5px;
+  font-size: 1.3rem;
+}
+
+.infoMessage {
+  display: none;
+  width: 50%;
+  height: 50px;
+  margin-bottom: 20px;
+  padding: 20px;
+  background: var(--dark-color);
+  border-radius: 20px;
+}
+
+.errorMessageBadInput {
+  color: var(--error-color);
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.closeInterface {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 3rem;
+}
+
+.footer {
+  background: var(--dark-color);
+  color: var(--light-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0 100px var(--light-color);
+  padding: 50px 20px 20px 20px;
+}
+
+.footer img {
+  width: 200px;
+}
+
+.footer h4 {
+  font-size: 1.3rem;
+  margin-bottom: 30px;
+}
+
+.footer .bankName {
+  font-size: 1.4rem;
+}
+
+.footer .me {
+  min-height: 100px;
+  border-top: 2px var(--blue-color) solid;
+  padding: 20px;
+}
+
+.me p {
+  font-size: .7rem;
+}
+
+
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+  }
+  
+  .header {
+    background: var(--dark-color);
+  }
+  
+  .container h4 {
+    background: var(--dark-color);
+  }
+  
+  .header {
+    box-shadow: 0 0 100px var(--light-color);
+  }
+  
+  .bankDetails {
+    background: var(--dark-theme-gradient);
+  }
+  
+  .formCreation {
+    background: var(--dark-color);
+  }
+  
+}
+
+
+@media (min-width: 600px) {
+  .bankDetails {
+    grid-template-rows: 100px 350px 350px;
+  }
+  .bankDetails h4{
+    color: var(--dark-color);
   }
 }

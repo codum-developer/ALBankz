@@ -83,4 +83,4 @@ Ce projet a été conçu dans un but pédagogique : comprendre et mettre en prat
 
 ✨ Mention
 
-> Le site est créé par Alain sous surveillance de l'IA
+> Le site est créé par Codum en collaboration avec l'IA

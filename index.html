@@ -8,15 +8,127 @@
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
   <link rel="stylesheet" href="/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="webmanifest" href="./site.webmanifest"/>
 </head>
 
 <body>
-  <div class="on-open">
-    <img src="./logoBank.webp" alt="logo du bank" />
+  <div class="curtain">
+    <img src="./logoBank.webp" alt="Logo ALBankz" />
   </div>
   <header class="header">
-    
+    <h1>ALBankz</h1>
+    <div class="user-icone">
+      <i class="fa-solid fa-user-plus" id="creationAccount"></i>
+    </div>
   </header>
+  
+  <section class="beforeAccountCreationDiplay">
+    <h1>Bienvenue chez <span class="bankName">ALBankz</span></h1>
+    <div class="askToCreateAccount container">
+      <h4>Créer un Compte Bancaire</h4>
+      <p>Pour continuer et profiter de tous nos services bancaires, veuillez créer un compte.</p>
+      <label id="creationAccount">Créer un Compte</label>
+    </div>
+    <br /><br />
+    <div class="bankDetails">
+      
+      <h4>Une Carte Visa vous attend</h4>
+      
+      <div class="cards">
+        <div class="Card">
+          <img src="./visaRecto.webp" alt="Carte Visa - Recto" />
+        </div>
+        <div class="Card">
+          <img src="./visaVerso.webp" alt="Carte Visa - Verso" />
+        </div>
+      </div>
+      <p>Avec votre compte <span class="bankNameGreen">ALBankz</span>, vous obtenez une carte Visa prête pour tous vos achats en ligne et dans les supermarchés.</p>
+    </div>
+    <div class="info container">
+      <h4>Vous ne nous connaissez pas ?</h4>
+      <p>Si vous ne nous connaissez pas, ne vous inquiétez pas, nous allons tout vous expliquer. Nous sommes une banque internationale qui travaille avec des clients du monde entier.</p>
+      <details>
+        <summary>
+          Cliquez ici pour tout savoir sur nos services
+        </summary>
+      </details>
+      <a href="">En savoir plus sur ALBankz</a>
+    </div>
+    <div class="buttonCreation">
+      <button id="creationAccount">Ouvrir un Compte</button>
+    </div>
+    <div class="partnersBrands">
+      <h4>Nos Partenaires</h4>
+      <div class="partnersBrandsList">
+        <img src="./partnerBrand.webp" alt="Partenaire 1" class="brand" />
+        <img src="./partnerBrand.webp" alt="Partenaire 2" class="brand" />
+        <img src="./partnerBrand.webp" alt="Partenaire 3" class="brand" />
+      </div>
+    </div>
+    <br /><br />
+    <div class="ourBrands">
+      <h4>Nos Marques</h4>
+      <div class="ourBrandsList">
+        <img src="./ourBrand.webp" alt="Notre Marque 1" class="brand" />
+        <img src="./ourBrand.webp" alt="Notre Marque 2" class="brand" />
+      </div>
+    </div>
+    <br /><br>
+    <div class="interestCustom container">
+      <h4>Ce que nous vous offrons</h4>
+      <p>Faites-nous confiance et vous ne le regretterez pas.</p>
+      
+      <p>Rejoindre <span class="bankName">ALBankz</span> c'est rejoindre tout un monde d'entrepreneurs, de finance et de prospérité.</p>
+      <button id="creationAccount">Créer mon Compte</button>
+    </div>
+  </section>
+  
+  <section class="creatingAccount">
+    <i class="closeInterface">&times;</i>
+    <div class="infoMessage">
+      <p>❌</p>
+      <p class="errorMessageBadInput"></p>
+    </div>
+    <div class="formbox">
+      <form method="get" accept-charset="utf-8" id="createAccountForm">
+        <div class="inputBox">
+          <input type="text" name="" id="Username" required />
+          <label for="">Nom Complet</label>
+        </div>
+        <div class="inputBox">
+          <input type="password" name="" id="password" required />
+          <label for="">Mot de Passe</label>
+        </div>
+        
+        <button type="submit" id="createAccount">Créer le Compte</button>
+      </form>
+    </div>
+  </section>
+  
+  <footer class="footer">
+    <h4>À Propos de Nous</h4>
+    <span class="bankName">ALBankz</span>
+    <img src="./logoBank.webp" alt="Logo ALBankz" style="width: 150px; height: 150px;" />
+    <p>Ce logo et la marque ALBankz nous appartiennent.</p><br /><br />
+    <p>Suivez-nous sur nos réseaux sociaux :</p>
+    <ul class="OurSocialMedia">
+      <li></li>
+      <li></li>
+    </ul>
+    <p>Pour une assistance personnalisée, contactez-nous :</p>
+    <ul class="OurContact">
+      <li></li>
+      <li></li>
+    </ul>
+    <div class="me">
+      <p>Cimpunda, Katutu, Bukavu, Sud-Kivu, République Démocratique du Congo</p>
+      <br />
+      <p>Murhabazi Bisimwa Alain</p>
+    </div>
+    <div class="copyright">
+      <p>&COPY;2025 ALBankz <span style="color: var(--blue-color);">v1.0</span> || Tous droits réservés</p>
+    </div>
+  </footer>
   
   <script src="/bankAccount.js" type="text/javascript" charset="utf-8"></script>
   <script src="/bank.js"></script>
