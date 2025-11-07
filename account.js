@@ -23,8 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
       toggleSoldeButton.setAttribute('aria-label', 'Afficher le solde'); // Accessibilité
     } else {
       // Afficher le solde
-      console.log(window.account)
-      soldeElement.textContent = `${window.account.pay} FC`;
+      console.log(account)
+      soldeElement.textContent = `${account.pay} FC`;
       eyeIcon.classList.remove('fa-eye');
       eyeIcon.classList.add('fa-eye-slash');
       toggleSoldeButton.setAttribute('aria-label', 'Masquer le solde'); // Accessibilité

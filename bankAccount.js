@@ -37,4 +37,3 @@ class BankAccount {
   
 }
 
-window.BankAccount = BankAccount

@@ -25,12 +25,13 @@ document.addEventListener("DOMContentLoaded", () => {
       event.preventDefault()
       const usermane = document.querySelector("#Username").value.trim()
       const password = document.querySelector("#password").value.trim()
-      window.account = albankz.createAccount(usermane, password)
-      if (window.account[0] == false) {
+      request = albankz.createAccount(usermane, password)
+      if (request[0] == false) {
         infoMessage.style.display = "block"
-        errorMessageBadInput.innerText = window.account[1]
+        errorMessageBadInput.innerText = request[1]
       } else {
         infoMessage.style.display = "none"
+        account = request[3]
         window.location.href = "./account.html"
         
         
