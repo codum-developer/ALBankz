@@ -28,20 +28,11 @@ class Bank {
       return [false, "le mon de passe doit avoir 6 à 12 caractère"]
     }
     if (critic[0] == true && critic[1] == true) {
-      let account
-      account = new BankAccount(username, password, 0,this);
-      this.notified(account, "Rejoint la banque")
+      let account = new BankAccount(username, password, 0, this)
+      this.notified(account, "Créer un compte")
       this.#accountList.push(account)
-      console.log(this.#accountList)
-      
-      return [true, "Compte créer avec succès",
-      {
-        username,
-        password,
-        pay: 0
-      },account]
-      
       this.#userCount++
+      return account
     }
     
   }

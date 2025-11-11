@@ -62,6 +62,36 @@
     <div id="menuOverlay" class="menu-overlay"></div>
     
     
+    <!--des dialogue pour depot et retrait-->
+    <dialog class="dialogDeposit">
+      <div class="depositContainer">
+        <i id="closeDialog">&times;</i>
+        <h3>Déposer en sécurité</h3>
+        <div>
+          <p class="note">Note: le montant à déposer doit être d'au-moins 1FC(franc congolai)</p>
+          <label for="">FC</label>
+          <input type="number" name="" id="depositInput" placeholder="Montant à déposer">
+          <p class="depositError error"></p>
+          <button id="valid">Valider</button>
+        </div>
+      </div>
+    </dialog>
+    
+    <dialog class="dialogWithdraw">
+      <div class="withdrawContainer">
+        <i id="closeDialog">&times;</i>
+        <h3>Retirer en sécurité</h3>
+        <div>
+          <p class="note"> Note: le montant à retirer doit être supérieur ou égal à 1FC et inférieure ou égale au solde actuel</p>
+          <label for="">FC</label>
+          <input type="number" name="" id="withdrawInput" placeholder="Montant à retirer">
+          <p class="withdrawalError error"></p>
+          <button id="valid">Valider</button>
+        </div>
+      </div>
+    </dialog>
+    
+    
     <!-- ============================================= -->
     <!-- CONTENU PRINCIPAL -->
     <!-- ============================================= -->
@@ -72,7 +102,7 @@
           <button id="openMenuButton" class="menu-button open-button" aria-label="Ouvrir le menu">
             <i class="fa-solid fa-bars"></i>
           </button>
-          <h2 class="welcome-title">Bonjour, User!</h2>
+          <h2 class="welcome-title">Bonjour, <span id="SayHiUser">user</span></h2>
         </div>
         
         <div class="header-right">
@@ -99,13 +129,13 @@
           <div class="quick-actions-grid">
             
             <!-- Tuile: Déposer -->
-            <div class="action-tile deposit-tile" title="Déposer de l'argent" style="grid-area: tile1;">
+            <div class="action-tile deposit-tile" id="depositButton" title="Déposer de l'argent" style="grid-area: tile1;">
               <i class="fa-solid fa-money-bill-trend-up action-icon blue-icon"></i>
               <p class="action-text">Déposer</p>
             </div>
             
             <!-- Tuile: Retirer -->
-            <div class="action-tile withdraw-tile" title="Retirer de l'argent" style="grid-area: tile2;">
+            <div class="action-tile withdraw-tile" id="withdrawButton" title="Retirer de l'argent" style="grid-area: tile2;">
               <i class="fa-solid fa-money-bill-transfer action-icon secondary-icon"></i>
               <p class="action-text">Retirer</p>
             </div>
@@ -115,7 +145,7 @@
               <i class="fa-solid fa-wallet action-icon primary-icon"></i>
               <p class="solde-label">Votre Solde Actuel</p>
               <div class="solde-display">
-                <p id="solde"  class="solde-amount">********</p>
+                <p id="solde" class="solde-amount">********</p>
                 <button id="toggleSolde" class="solde-toggle-button" aria-label="Afficher/Masquer le solde">
                   <i id="eyeIcon" class="fa-solid fa-eye"></i>
                 </button>
@@ -258,9 +288,8 @@
   <!-- Lien vers le fichier JavaScript -->
   <script src="./bankAccount.js" type="text/javascript" charset="utf-8"></script>
   <script src="./bank.js" type="text/javascript" charset="utf-8"></script>
-    <script src="./main.js" type="text/javascript" charset="utf-8"></script>
   <script src="./account.js" type="text/javascript" charset="utf-8"></script>
-
+  
 </body>
 
 </html>

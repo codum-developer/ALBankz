@@ -28,30 +28,6 @@ body {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.curtain {
-  width: 100%;
-  height: 100vh;
-  margin: 0;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #FFFEF6FA;
-  -webkit-mask-image: radial-gradient(#000000FA, transparent);
-  mask-image: radial-gradient(#000000FA, transparent);
-  z-index: 1000;
-}
-
-.curtain img {
-  width: 200px;
-  height: 200px;
-  aspect-ratio: 5/5;
-  object-fit: cover;
-  border-top-left-radius: 50%;
-  border-top-right-radius: 50%;
-  animation: pulse 2s ease 1s;
-  
-}
 
 @keyframes pulse {
   0% {
@@ -247,6 +223,35 @@ input:focus {
   animation: pulse ease 3s infinite;
 }
 
+@property --angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.buttonCreation button::before{
+  content: "";
+  width: calc(100%+ 3px);
+  height: calc(100%+ 3px);
+  position: absolute;
+  right: -3px;
+  top: -3px;
+  left: -3px;
+  bottom: -3px;
+  background: conic-gradient(from var(--angle), var(--blue-color), transparent 80%,transparent,var(--blue-color));
+  border-radius: 20px;
+  z-index: -10;
+  animation: spin 3s linear infinite;
+}
+@keyframes spin{
+  to{
+    --angle: 0deg;
+  }
+  from{
+    --angle: 360deg;
+  }
+}
+
 #creationAccount {
   background: var(--gradient);
   border-radius: 20px;
@@ -361,6 +366,7 @@ form input {
   padding: 0;
   display: block;
   margin: 0;
+  pointer-events: none;
   background: none  !important;
   position: absolute;
   left: 5px;

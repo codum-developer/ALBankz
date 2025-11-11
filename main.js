@@ -1,5 +1,7 @@
-albankz = new Bank()
+const albankz = new Bank()
+
 document.addEventListener("DOMContentLoaded", () => {
+
   //variable pour gerer l'ouverture et la fermeture de l'interface "Create account"
   const inscriptionInterface = document.querySelector(".creatingAccount")
   const displayInscriptionInterface = document.querySelectorAll("#creationAccount")
@@ -19,27 +21,33 @@ document.addEventListener("DOMContentLoaded", () => {
   
   
   if (createAccountForm) {
-      //logique de vérification des input utilisateur
-    let account;
+    //logique de vérification des input utilisateur
     createAccountForm.addEventListener("submit", (event) => {
       event.preventDefault()
       const usermane = document.querySelector("#Username").value.trim()
       const password = document.querySelector("#password").value.trim()
-      request = albankz.createAccount(usermane, password)
-      if (request[0] == false) {
+      //tentative de création du compte 
+      let account = albankz.createAccount(usermane, password)
+      
+      if (account[0] == false) {
         infoMessage.style.display = "block"
-        errorMessageBadInput.innerText = request[1]
+        errorMessageBadInput.innerText = account[1]
       } else {
         infoMessage.style.display = "none"
-        account = request[3]
+        sessionStorage.setItem("account", JSON.stringify(account))
         window.location.href = "./account.html"
-        
-        
       }
       
     })
   }
-
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   

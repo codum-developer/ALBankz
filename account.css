@@ -1,6 +1,7 @@
 /* Définition des variables de couleurs */
 :root {
-    --border-radius: 1rem; /* 16px */
+    --border-radius: 1rem;
+    /* 16px */
     --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.05);
     --shadow-dark: 0 4px 12px rgba(0, 0, 0, 0.2);
     --text-color: var(--dark-color);
@@ -16,7 +17,8 @@
     :root {
         --text-color: var(--light-color);
         --background-color: var(--dark-color);
-        --card-background: #3f454f; /* Gris foncé légèrement différent */
+        --card-background: #3f454f;
+        /* Gris foncé légèrement différent */
         --accent-bg: rgba(255, 230, 0, 0.05);
     }
 }
@@ -33,7 +35,8 @@ body {
     min-height: 100vh;
     color: var(--text-color);
     background-color: var(--background-color);
-    transition: background-color 0.3s, color 0.3s; /* Transition fluide des couleurs de thème */
+    transition: background-color 0.3s, color 0.3s;
+    /* Transition fluide des couleurs de thème */
 }
 
 a {
@@ -53,7 +56,8 @@ a {
 /* Barre Latérale (Sidebar) - Mobile par défaut */
 .sidebar {
     width: 100%;
-    max-width: 250px; /* Largeur sur desktop */
+    max-width: 250px;
+    /* Largeur sur desktop */
     padding: 2rem 1.5rem;
     background-color: var(--card-background);
     box-shadow: var(--shadow-dark);
@@ -102,12 +106,16 @@ a {
         min-height: 100vh;
         box-shadow: var(--shadow-light);
     }
+    
     .main-content {
-        margin-left: 0; /* Pas de marge car la sidebar est relative */
+        margin-left: 0;
+        /* Pas de marge car la sidebar est relative */
         padding: 2.5rem 2rem;
     }
+    
     .menu-button {
-        display: none !important; /* Masque les boutons de menu sur desktop */
+        display: none !important;
+        /* Masque les boutons de menu sur desktop */
     }
 }
 
@@ -130,7 +138,8 @@ a {
 .logo-subtitle {
     font-size: 0.75rem;
     margin-left: 0.25rem;
-    color: #6B7280; /* Gris */
+    color: #6B7280;
+    /* Gris */
 }
 
 .main-nav {
@@ -148,7 +157,8 @@ a {
     transition: background-color 0.2s, color 0.2s;
 }
 
-.nav-link:hover, .nav-link.active {
+.nav-link:hover,
+.nav-link.active {
     background-color: var(--accent-bg);
 }
 
@@ -161,6 +171,7 @@ a {
     margin-top: 3rem;
     color: var(--error-color);
 }
+
 .logout-link:hover {
     background-color: rgba(255, 0, 0, 0.1);
 }
@@ -180,8 +191,10 @@ a {
     align-items: center;
     margin-bottom: 2rem;
     padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(107, 114, 128, 0.2); /* Gris clair/foncé selon thème */
+    border-bottom: 1px solid rgba(107, 114, 128, 0.2);
+    /* Gris clair/foncé selon thème */
 }
+
 @media (max-width: 1024px) {
     .dashboard-header {
         position: sticky;
@@ -192,7 +205,8 @@ a {
     }
 }
 
-.header-left, .header-right {
+.header-left,
+.header-right {
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -216,6 +230,7 @@ a {
     cursor: pointer;
     transition: color 0.2s;
 }
+
 .notification-icon:hover {
     color: var(--primary-color);
 }
@@ -242,7 +257,8 @@ a {
     padding: 5px;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-light);
-    border: 1px solid rgba(255, 230, 0, 0.2); /* Bordure subtile jaune */
+    border: 1px solid rgba(255, 230, 0, 0.2);
+    /* Bordure subtile jaune */
     transition: box-shadow 0.3s, background-color 0.3s;
 }
 
@@ -265,7 +281,8 @@ a {
 .primary-button {
     width: 100%;
     padding: 0.75rem 1.5rem;
-    border-radius: 9999px; /* Full rounded */
+    border-radius: 9999px;
+    /* Full rounded */
     font-weight: 600;
     border: none;
     background-color: var(--primary-color);
@@ -310,6 +327,7 @@ a {
     margin-top: 1rem;
     display: block;
 }
+
 .link-button:hover {
     text-decoration: underline;
 }
@@ -349,16 +367,17 @@ a {
     display: grid;
     gap: 1rem;
     grid-template-areas:
-    "tile1 tile2 ""tile3 tile3";
+        "tile1 tile2 " "tile3 tile3";
 }
 
 @media (min-width: 640px) {
-  .info-card{
-    padding: 1.5rem;
-  }
-  .main-content{
-    padding: 1.5rem;
-  }
+    .info-card {
+        padding: 1.5rem;
+    }
+    
+    .main-content {
+        padding: 1.5rem;
+    }
 }
 
 .action-tile {
@@ -422,14 +441,23 @@ a {
     opacity: 0.7;
     transition: opacity 0.2s;
 }
+
 .solde-toggle-button:hover {
     opacity: 1;
 }
 
 /* Couleurs des icônes */
-.primary-icon { color: var(--primary-color); }
-.secondary-icon { color: var(--secondary-color); }
-.blue-icon { color: var(--blue-color); }
+.primary-icon {
+    color: var(--primary-color);
+}
+
+.secondary-icon {
+    color: var(--secondary-color);
+}
+
+.blue-icon {
+    color: var(--blue-color);
+}
 
 /* =============================================
    SECTION 2: Cards & Services
@@ -470,7 +498,8 @@ a {
 .visa-card-preview {
     width: 100%;
     max-width: 400px;
-    height: 12rem; /* Hauteur fixe pour l'aspect carte */
+    height: 12rem;
+    /* Hauteur fixe pour l'aspect carte */
     padding: 1.25rem;
     border-radius: var(--border-radius);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
@@ -480,9 +509,11 @@ a {
     justify-content: space-between;
     
     /* Dégradé Or */
-    background: linear-gradient(135deg, #FFD700, #FFE600, #F0E68C); 
-    color: var(--dark-color); /* Texte sombre sur Or */
-    font-family: monospace; /* Pour le numéro de carte */
+    background: linear-gradient(135deg, #FFD700, #FFE600, #F0E68C);
+    color: var(--dark-color);
+    /* Texte sombre sur Or */
+    font-family: monospace;
+    /* Pour le numéro de carte */
 }
 
 .card-details {
@@ -521,7 +552,8 @@ a {
 }
 
 .card-manage-button {
-    margin-top: auto; /* Pousse le bouton vers le bas */
+    margin-top: auto;
+    /* Pousse le bouton vers le bas */
 }
 
 /* Services List */
@@ -565,7 +597,8 @@ a {
     overflow-x: auto;
 }
 
-.transactions-table th, .transactions-table td {
+.transactions-table th,
+.transactions-table td {
     padding: 0.75rem 1.5rem;
 }
 
@@ -573,13 +606,15 @@ a {
     font-size: 0.75rem;
     font-weight: 500;
     text-transform: uppercase;
-    color: #6B7280; /* Gris */
+    color: #6B7280;
+    /* Gris */
     border-bottom: 1px solid rgba(107, 114, 128, 0.1);
 }
 
 @media (prefers-color-scheme: dark) {
     .transactions-table thead th {
-        color: #9CA3AF; /* Gris plus clair en mode sombre */
+        color: #9CA3AF;
+        /* Gris plus clair en mode sombre */
     }
 }
 
@@ -615,7 +650,99 @@ a {
     background-color: rgba(255, 0, 0, 0.1);
     color: var(--error-color);
 }
+
 .status-badge.credited {
     background-color: rgba(0, 255, 66, 0.1);
     color: var(--secondary-color);
+}
+
+
+
+dialog[open] {
+    padding: 2rem;
+    margin: 0;
+    background: transparent;
+    backdrop-filter: blur(5px);
+    position :fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    max-width: none;
+    max-height: none;
+    width: 100dvw;
+    height: 100dvh;
+    display: flex;
+    justify-content: center ;
+    align-items: center;
+    z-index: 200;
+    
+}
+
+.depositContainer, .withdrawContainer{
+    background: var(--background-color);
+    padding: 10px;
+    border-radius: var(--border-radius);
+    display:grid;
+    grid-template-rows: 20px 30px ;
+    max-width: 600px;
+    max-height: 500px;
+    position: relative;
+    
+}
+.depositContainer p,.withdrawContainer p{
+    font-size: .5rem;
+    text-align: left;
+    margin: 0;
+    margin-top: 1rem;
+    color: var(--blue-color);
+}
+
+.depositContainer h3,.withdrawContainer h3{
+    margin: 0 ;
+    padding: 0;
+    border-bottom: 1px var(--blue-color) solid;
+    color: var(--text-color);
+}
+.depositContainer input,.withdrawContainer input{
+    height: 50px;
+    width: 100%;
+    border: 1.7px solid var(--primary-color);
+    background: none;
+    color: var(--text-color);
+    border-radius: var(--border-radius);
+    display: block;
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    
+}
+
+.depositContainer button,.withdrawContainer button{
+    height: 40px;
+    width: 100%;
+    background: var(--primary-color);
+    color: var(--dark-color);
+    border: none;
+    border-radius: var(--border-radius);
+    font-weight: 600;
+}
+
+.depositContainer i,.withdrawContainer i{
+    text-align: right;
+}
+
+dialog label{
+    position: absolute;
+    transform: translateY(-5px);
+    right: 20px;
+    color: var(--text-color);
+}
+
+dialog .error{
+    color: var(--error-color);
+    font-size: .6rem;
+    margin: 0;
+    margin-bottom: 2rem;
+    padding: 0;
 }

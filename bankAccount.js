@@ -25,15 +25,22 @@ class BankAccount {
       return [false, "retrait échoué, le montant doit être supérieur au solde , et supérieur à zéro."]
     } else {
       this.#pay -= amount
+      this.bank.notified(this, `Retrait réussi montant: ${amount} , Nouveau solde : ${this.#pay}`)
       return [true, `Retrait effectué avec succès ! nouveau solde ${this.#pay}`]
     }
   }
   
-  get pay() {
+  get solde() {
     return `${this.#pay}`
   }
   
-  
+  /*set password(newpassword) {
+    if (password === this.#password) {
+      this.#password = newpassword
+      return true
+    } else return false
+    
+  }
+  */
   
 }
-
