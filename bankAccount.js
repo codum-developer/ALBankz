@@ -30,7 +30,7 @@ class BankAccount {
     }
   }
   
-  get solde() {
+  get pay() {
     return `${this.#pay}`
   }
   

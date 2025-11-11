@@ -1,4 +1,3 @@
-const albankz = new Bank()
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -26,15 +25,15 @@ document.addEventListener("DOMContentLoaded", () => {
       event.preventDefault()
       const usermane = document.querySelector("#Username").value.trim()
       const password = document.querySelector("#password").value.trim()
-      //tentative de création du compte 
-      let account = albankz.createAccount(usermane, password)
+      //revalidation de entrées utilisateurs
+      let entriesValidate = albankz.validateInput(usermane, password)
       
-      if (account[0] == false) {
+      if (entriesValidate[0] == false) {
         infoMessage.style.display = "block"
-        errorMessageBadInput.innerText = account[1]
+        errorMessageBadInput.innerText = entriesValidate[1]
       } else {
         infoMessage.style.display = "none"
-        sessionStorage.setItem("account", JSON.stringify(account))
+        sessionStorage.setItem("entriesChecked", JSON.stringify(entriesValidate))
         window.location.href = "./account.html"
       }
       

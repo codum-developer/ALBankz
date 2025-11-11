@@ -1,23 +1,25 @@
-let account = JSON.parse(sessionStorage.getItem("account"))
-console.log(account)
-sessionStorage.removeItem("account")
+let checkedData = JSON.parse(sessionStorage.getItem("entriesChecked"))
+if (checkedData) {
+  sessionStorage.removeItem("entriesChecked")
+  let account = albankz.createAccount(checkedData.username, checkedData.password)
+}else document.location.href = "./index.html"
+
 
 document.addEventListener("DOMContentLoaded", () => {
-  withdrawButton = document.getElementById("withdrawButton")
-  depositButton = document.getElementById("depositButton")
-  dialogDeposit = document.querySelector(".dialogDeposit")
-  dialogWithdraw = document.querySelector(".dialogWithdraw")
-  closeDialogButtons = document.querySelectorAll("#closeDialog")
-  dialogTags = document.querySelectorAll("dialog")
-  
+  const withdrawButton = document.getElementById("withdrawButton")
+  const depositButton = document.getElementById("depositButton")
+  const dialogDeposit = document.querySelector(".dialogDeposit")
+  const dialogWithdraw = document.querySelector(".dialogWithdraw")
+  const closeDialogButtons = document.querySelectorAll("#closeDialog")
+  const dialogTags = document.querySelectorAll("dialog")
   
   if (withdrawButton) {
     withdrawButton.addEventListener("click", () => dialogWithdraw.showModal())
-    depositButton.addEventListener("click", () => dialogDeposit.showModal() )
+    depositButton.addEventListener("click", () => dialogDeposit.showModal())
     
-    
-    closeDialogButtons.forEach((closeDialogButton)=>{
-      closeDialogButton.addEventListener("click", ()=>{dialogTags.forEach((dialogTag)=>dialogTag.close())
+    closeDialogButtons.forEach((closeDialogButton) => {
+      closeDialogButton.addEventListener("click", () => {
+        dialogTags.forEach((dialogTag) => dialogTag.close())
         
       })
     })
@@ -31,10 +33,15 @@ document.addEventListener("DOMContentLoaded", () => {
     successMessage.style.display = "flex"
     setTimeout(() => successMessage.style.display = "none", 2000)
   }
+  
   const sayHiUser = document.getElementById("SayHiUser")
-  if (sayHiUser) {
-    sayHiUser.textContent = account.username
-  }
+  const userAvatar = document.querySelector(".user-avatar")
+  const nameInCard = document.querySelector(".nameInCard")
+  
+  userAvatar.textContent = String(account.username)[0]
+  nameInCard.textContent = String(account.username)
+  sayHiUser.textContent = account.username
+  
   
   // Références aux éléments du Solde
   const soldeElement = document.getElementById('solde');
@@ -56,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
         toggleSoldeButton.setAttribute('aria-label', 'Afficher le solde'); // Accessibilité
       } else {
         // Afficher le solde
-        soldeElement.textContent = `${account} FC`;
+        soldeElement.textContent = `${account.pay} FC`;
         eyeIcon.classList.remove('fa-eye');
         eyeIcon.classList.add('fa-eye-slash');
         toggleSoldeButton.setAttribute('aria-label', 'Masquer le solde'); // Accessibilité
