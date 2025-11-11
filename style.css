@@ -30,19 +30,9 @@ body {
 
 
 @keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 var(--light-color);
-  }
-  
-  50% {
-    box-shadow: 0 0 20px var(--light-color);
-    transform: scale(1.4);
-  }
-  
-  100% {
-    box-shadow: 0 0 #FFFCFC;
-    transform: scale(1);
-  }
+  0%{ transform: scale(1);}
+  50% { transform: scale(1.4);}
+  100%{ transform: scale(1);}
 }
 
 a {
@@ -210,17 +200,27 @@ input:focus {
 }
 
 .buttonCreation {
+  position: relative;
   display: flex;
   min-height: 300px;
+  width: 100vw;
   justify-content: center;
   align-items: center;
 }
 
-.buttonCreation button {
+.button-rwapper{
+  position: relative;
+  max-width: 500px;
+  width: 50%;
+  z-index: 0;
+  animation: pulse alternate 3s infinite;
+  background: none;
+  
+}
+.button-rwapper button {
   padding: 5px  !important;
-  width: 80%;
+  width: 100%;
   font-size: 1.7rem;
-  animation: pulse ease 3s infinite;
 }
 
 @property --angle {
@@ -229,18 +229,15 @@ input:focus {
   initial-value: 0deg;
 }
 
-.buttonCreation button::before{
+.button-rwapper::before{
   content: "";
   width: calc(100%+ 3px);
   height: calc(100%+ 3px);
   position: absolute;
-  right: -3px;
-  top: -3px;
-  left: -3px;
-  bottom: -3px;
-  background: conic-gradient(from var(--angle), var(--blue-color), transparent 80%,transparent,var(--blue-color));
+  inset: -3px;
+  background: conic-gradient(from var(--angle), var(--blue-color), transparent 80%);
   border-radius: 20px;
-  z-index: -10;
+  z-index: -1;
   animation: spin 3s linear infinite;
 }
 @keyframes spin{
@@ -460,14 +457,11 @@ form button {
   
   .header {
     background: var(--dark-color);
+    box-shadow: 0 0 100px var(--light-color);
   }
   
   .container h4 {
     background: var(--dark-color);
-  }
-  
-  .header {
-    box-shadow: 0 0 100px var(--light-color);
   }
   
   .bankDetails {
