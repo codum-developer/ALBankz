@@ -61,9 +61,12 @@ label{
   font-weight: bold;
   margin-top: 20px;
 }
+button, #creationAccount{
+  transition: filter 1s ease;
+}
 button:hover, #creationAccount:hover{
   cursor: pointer;
-  opacity: .9;
+  filter: brightness(2);
   
 }
 
