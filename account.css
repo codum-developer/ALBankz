@@ -693,6 +693,7 @@ dialog[open] {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 20px;
 }
 .successRequestMessageContainer i, .successRequestMessageWthdraw i{
     margin-bottom: 30px;
@@ -717,7 +718,7 @@ dialog .open{
     font-size: .5rem;
     text-align: left;
     margin: 0;
-    margin-bottom: 6px;
+    margin-bottom: 10px;
     margin-top: 1rem;
     color: var(--blue-color);
 }
