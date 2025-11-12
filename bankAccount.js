@@ -13,7 +13,7 @@ class BankAccount {
     if (amount <= 0) {
       return [false, "le dépôt minimum est de 1"]
     } else {
-      this.#pay += amount
+      this.#pay += parseFloat(amount)
       this.bank.notified(this, `Dépôt réussi montant: ${amount} , Nouveau solde : ${this.#pay}`)
       return [true, `dépôt effectué avec succès nouveau solde ${this.#pay}`]
     }
@@ -22,7 +22,7 @@ class BankAccount {
   
   withdraw(amount) {
     if (this.#pay < amount || amount <= 0) {
-      return [false, "retrait échoué, le montant doit être supérieur au solde , et supérieur à zéro."]
+      return [false, "retrait échoué, le montant doit être inférieure ou égale au solde , et supérieur à zéro."]
     } else {
       this.#pay -= amount
       this.bank.notified(this, `Retrait réussi montant: ${amount} , Nouveau solde : ${this.#pay}`)

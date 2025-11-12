@@ -1,8 +1,9 @@
 let checkedData = JSON.parse(sessionStorage.getItem("entriesChecked"))
+let account;
 if (checkedData) {
-  sessionStorage.removeItem("entriesChecked")
-  let account = albankz.createAccount(checkedData.username, checkedData.password)
-}else document.location.href = "./index.html"
+  account = albankz.createAccount(checkedData.username, checkedData.password)
+  //sessionStorage.removeItem("entriesChecked")
+} else document.location.href = "./index.html"
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -110,12 +111,56 @@ document.addEventListener("DOMContentLoaded", () => {
         toggleMenu(false);
       }
     });
-    
-    
-    console.log("ALBankz Dashboard script loaded."); // Confirmation de chargement
-    
-    
+    //console.log("ALBankz Dashboard script loaded."); // Confirmation de chargement
   }
+  
+  //Validation de dépôt et retrait ,script 
+  const validDepositButton = document.getElementById("validDeposit")
+  const depositInput = document.getElementById("depositInput")
+  const depositError = document.getElementById("depositError")
+  
+  const successRequestMessage = document.querySelector(".successRequestMessageContainer")
+  const successRequestMessageWthdraw = document.querySelector(".successRequestMessageWthdraw")
+  
+  const validWithdrawalButton = document.getElementById("validWithdrawal")
+  const withdrawInput = document.getElementById("withdrawInput")
+  const withdrawalError = document.getElementById("withdrawalError")
+  
+  validDepositButton.addEventListener("click", () => {
+    if (depositInput.value) {
+      let depositRequest = account.deposit(depositInput.value)
+      if (depositRequest[0] == false) {
+        depositError.textContent = depositRequest[1]
+      } else {
+        successRequestMessage.lastElementChild.textContent = depositRequest[1]
+        successRequestMessage.classList.add("open")
+        setTimeout(() => {
+          dialogTags.forEach((dialogTag) => dialogTag.close())
+          successRequestMessage.classList.remove("open")
+        }, 1000)
+      }
+    }
+    else { depositError.textContent = "Enter quelques chose svp" }
+  })
+  
+  validWithdrawalButton.addEventListener("click", () => {
+    if (withdrawInput.value) {
+      let withdrawalRequest = account.withdraw(withdrawInput.value)
+      if (withdrawalRequest[0] == false) {
+        withdrawalError.textContent = withdrawalRequest[1]
+      } else {
+        successRequestMessageWthdraw.lastElementChild.textContent = withdrawalRequest[1]
+        successRequestMessageWthdraw.classList.add("open")
+        setTimeout(() => {
+          dialogTags.forEach((dialogTag) => dialogTag.close())
+          successRequestMessageWthdraw.classList.remove("open")
+        }, 2000)
+      }
+    }
+    else { withdrawalError.textContent = "Enter quelques chose svp" }
+  })
+  
+  
   
   
   

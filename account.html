@@ -64,29 +64,47 @@
     
     <!--des dialogue pour depot et retrait-->
     <dialog class="dialogDeposit">
+      <div class="successRequestMessageContainer">
+        <i class="fa-solid fa-circle-check check-icon"></i>
+        <p></p>
+      </div>
       <div class="depositContainer">
         <i id="closeDialog">&times;</i>
         <h3>Déposer en sécurité</h3>
         <div>
           <p class="note">Note: le montant à déposer doit être d'au-moins 1FC(franc congolai)</p>
-          <label for="">FC</label>
+          <select name="SelectDevise" id="Devise">
+            <option value="FC">FC</option>
+            <option value="US">Shilingi</option>
+            <option value="US">US</option>
+            <option value="US">EUR</option>
+          </select>
           <input type="number" name="" id="depositInput" placeholder="Montant à déposer">
-          <p class="depositError error"></p>
-          <button id="valid">Valider</button>
+          <p class="depositError error" id="depositError"></p>
+          <button id="validDeposit">Valider</button>
         </div>
       </div>
     </dialog>
     
     <dialog class="dialogWithdraw">
+      <div class="successRequestMessageWthdraw">
+        <i class="fa-solid fa-circle-check check-icon"></i>
+        <p></p>
+      </div>
       <div class="withdrawContainer">
         <i id="closeDialog">&times;</i>
         <h3>Retirer en sécurité</h3>
         <div>
           <p class="note"> Note: le montant à retirer doit être supérieur ou égal à 1FC et inférieure ou égale au solde actuel</p>
-          <label for="">FC</label>
+          <select name="SelectDevise" id="Devise">
+            <option value="FC">FC</option>
+            <option value="US">Shilingi</option>
+            <option value="US">US</option>
+            <option value="US">EUR</option>
+          </select>
           <input type="number" name="" id="withdrawInput" placeholder="Montant à retirer">
-          <p class="withdrawalError error"></p>
-          <button id="valid">Valider</button>
+          <p class="withdrawalError error" id="withdrawalError"></p>
+          <button id="validWithdrawal">Valider</button>
         </div>
       </div>
     </dialog>

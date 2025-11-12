@@ -679,6 +679,29 @@ dialog[open] {
     
 }
 
+.successRequestMessageContainer, .successRequestMessageWthdraw{
+    border-radius: var(--border-radius);
+    background: var(--background-color);
+    color: var(--secondary-color);
+    position: absolute;
+    border: 1px var(--secondary-color) solid;
+    box-shadow: 0 0 10px var(--dark-color);
+    z-index: 10;
+    width: 80%;
+    height: 200px;
+    display:none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.successRequestMessageContainer i, .successRequestMessageWthdraw i{
+    margin-bottom: 30px;
+    font-size: 3rem;
+}
+dialog .open{
+    display: flex;
+}
+
 .depositContainer, .withdrawContainer{
     background: var(--background-color);
     padding: 10px;
@@ -694,6 +717,7 @@ dialog[open] {
     font-size: .5rem;
     text-align: left;
     margin: 0;
+    margin-bottom: 6px;
     margin-top: 1rem;
     color: var(--blue-color);
 }
@@ -732,11 +756,19 @@ dialog[open] {
     text-align: right;
 }
 
-dialog label{
+dialog select{
     position: absolute;
-    transform: translateY(-5px);
-    right: 20px;
+    transform: translateY(-10px);
+    right: 10px;
     color: var(--text-color);
+    background: var(--background-color);
+    border: none;
+    border-radius: 5px;
+    border: var(--primary-color) 2px solid;
+}
+dialog select:focus{
+    outline: none;
+    
 }
 
 dialog .error{
