@@ -12,51 +12,56 @@
 </head>
 
 <body>
+  <!-- ============================================= -->
+  <!-- MENU / BARRE LATÉRALE (Sidebar) -->
+  <!-- ============================================= -->
+  <aside id="sidebar" class="sidebar">
+    
+    <!-- Logo ALBankz -->
+    <div class="logo-container">
+      <h1 class="logo-title">ALBankz<span class="logo-subtitle">DASH</span></h1>
+      <!-- Bouton de fermeture mobile -->
+      <button id="closeMenuButton" class="menu-button close-button" aria-label="Fermer le menu">
+        <i class="fa-solid fa-times"></i>
+      </button>
+    </div>
+    
+    <!-- Navigation Menu -->
+    <nav class="main-nav">
+      <a href="#" class="nav-link active">
+        <i class="fa-solid fa-house nav-icon"></i>
+        <span>Tableau de Bord</span>
+      </a>
+      <a href="#" class="nav-link">
+        <i class="fa-solid fa-list-ul nav-icon"></i>
+        <span>Mes Transactions</span>
+      </a>
+      <a href="#" class="nav-link">
+        <i class="fa-solid fa-credit-card nav-icon"></i>
+        <span>Cartes & Services</span>
+      </a>
+      <a href="#" class="nav-link">
+        <i class="fa-solid fa-chart-line nav-icon"></i>
+        <span>Investissements</span>
+      </a>
+      <a href="#" class="nav-link">
+        <i class="fa-solid fa-gear nav-icon"></i>
+        <span>Paramètres</span>
+      </a>
+      <a href="#" class="nav-link logout-link">
+        <i class="fa-solid fa-sign-out-alt nav-icon"></i>
+        <span>Déconnexion</span>
+      </a>
+    </nav>
+  </aside>
+  
+  
+  
   <!-- Conteneur principal (Layout) -->
   <div id="app" class="app-container">
     
-    <!-- ============================================= -->
-    <!-- MENU / BARRE LATÉRALE (Sidebar) -->
-    <!-- ============================================= -->
-    <aside id="sidebar" class="sidebar">
-      
-      <!-- Logo ALBankz -->
-      <div class="logo-container">
-        <h1 class="logo-title">ALBankz<span class="logo-subtitle">DASH</span></h1>
-        <!-- Bouton de fermeture mobile -->
-        <button id="closeMenuButton" class="menu-button close-button" aria-label="Fermer le menu">
-          <i class="fa-solid fa-times"></i>
-        </button>
-      </div>
-      
-      <!-- Navigation Menu -->
-      <nav class="main-nav">
-        <a href="#" class="nav-link active">
-          <i class="fa-solid fa-house nav-icon"></i>
-          <span>Tableau de Bord</span>
-        </a>
-        <a href="#" class="nav-link">
-          <i class="fa-solid fa-list-ul nav-icon"></i>
-          <span>Mes Transactions</span>
-        </a>
-        <a href="#" class="nav-link">
-          <i class="fa-solid fa-credit-card nav-icon"></i>
-          <span>Cartes & Services</span>
-        </a>
-        <a href="#" class="nav-link">
-          <i class="fa-solid fa-chart-line nav-icon"></i>
-          <span>Investissements</span>
-        </a>
-        <a href="#" class="nav-link">
-          <i class="fa-solid fa-gear nav-icon"></i>
-          <span>Paramètres</span>
-        </a>
-        <a href="#" class="nav-link logout-link">
-          <i class="fa-solid fa-sign-out-alt nav-icon"></i>
-          <span>Déconnexion</span>
-        </a>
-      </nav>
-    </aside>
+    
+    
     
     <!-- Fond sombre semi-transparent pour mobile -->
     <div id="menuOverlay" class="menu-overlay"></div>
