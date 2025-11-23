@@ -4,8 +4,7 @@
   --primary-color: #EDC90C;
   --secondary-color: #00FF42;
   --blue-color: #0D92F9;
-  --light-theme-gradient: radial-gradient(circle, var(--primary-color) 35%, var(--light-color), var(--light-color));
-  --dark-theme-gradient: radial-gradient(circle, var(--primary-color) 35%, var(--dark-color), var(--dark-color));
+  --theme-gradient: linear-gradient(transparent , var(--primary-color), transparent);
   --error-color: #FF0000;
   --gradient: linear-gradient(120deg, var(--primary-color), var(--primary-color), #FFF5C4);
 }
@@ -152,7 +151,7 @@ input:focus {
 .bankDetails {
   min-height: 100vh;
   width: 100vw;
-  background: var(--light-theme-gradient);
+  background: var(--theme-gradient);
   display: grid;
   grid-template-rows: 100px 1fr 1fr;
   justify-content: center;
@@ -191,10 +190,11 @@ input:focus {
 .Card {
   justify-self: center;
   align-self: center;
-  background: #3538524F;
-  border-radius: 20px;
+  background: linear-gradient(var(--primary-color), transparent );
+  clip-path: polygon(10% 0,100% 0%,90% 100%,0% 100%) ;
   width: 300px;
   height: 300px;
+
 }
 
 .info {
@@ -333,11 +333,38 @@ input:focus {
   overflow: hidden;
   z-index: 110;
 }
+.cgu{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cgu label{
+  font-size: .9rem;
+  text-align: left;
+  color: var(--text-color);
+  margin: 0;
+}
+.cgu input{
+  width: 20px;
+  height: 20px;
+  accent-color: var(--secondary-color);
+}
+.resetPassword{
+  font-size: 1rem;
+  font-weight: 500;
+  color: #FFF5C4;
+}
+.sign-inLink{
+  display: flex;
+  justify-content: center;
+  
+}
 
-.formbox {
-  border: 2px var(--primary-color) solid;
-  padding: 20px;
-  border-radius: 20px;
+.formbox a{
+  color: #FFF5C4;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 500;
 }
 
 .creatingAccount form {
@@ -495,10 +522,6 @@ form button {
   
   .container h4 {
     background: var(--dark-color);
-  }
-  
-  .bankDetails {
-    background: var(--dark-theme-gradient);
   }
   
   .formCreation {
